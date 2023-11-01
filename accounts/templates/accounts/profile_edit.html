@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h2>Edit Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        First name: <input type="text" name="first_name" value="{{ user.first_name }}"><br>
+        Last name: <input type="text" name="last_name" value="{{ user.last_name }}"><br>
+        Email: <input type="text" name="email" value="{{ user.email }}"><br>
+        New Password (leave blank to keep current password): <input type="password" name="password1"><br>
+        Confirm New Password: <input type="password" name="password2"><br>
+        <input type="submit" value="Update">
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>

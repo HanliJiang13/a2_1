@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.8em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    
+    {{ form.username.label_tag }}<br>
+    {{ form.username }}<br>
+    {% if form.username.errors %}
+        <span class="error">{{ form.username.errors.0 }}</span>
+    {% endif %}
+    
+    {{ form.password.label_tag }}<br>
+    {{ form.password }}<br>
+    {% if form.password.errors %}
+        <span class="error">{{ form.password.errors.0 }}</span>
+    {% endif %}
+    
+    <button type="submit">Login</button>
+</form>
+
+{% if form.non_field_errors %}
+    <p style="color: red;">{{ form.non_field_errors.0 }}</p>
+{% endif %}
+</body>
+</html>
